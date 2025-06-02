@@ -1,9 +1,10 @@
-name: npm test
+name: CI Test
 
 on:
   pull_request:
     branches:
       - '**'
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
