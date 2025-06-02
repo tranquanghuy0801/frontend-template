@@ -1,0 +1,40 @@
+name: Run Cypress E2E Tests
+
+on:
+  pull_request:
+    branches:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  cypress_e2e_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📂 Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: 📥 Pnpm install
+        uses: ./.github/actions/pnpm-install
+
+      - name: 💾 Cache Cypress
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - name: 🌲 Install Cypress
+        run: pnpm cypress install
+
+      - name: 🧪 Run Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          install: false
+          start: pnpm dev
+          wait-on: 'http://localhost:5173'
+          browser: chrome

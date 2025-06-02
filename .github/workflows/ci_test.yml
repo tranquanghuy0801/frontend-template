@@ -1,4 +1,4 @@
-name: CI Test
+name: Run Unit and Integration Tests
 
 on:
   pull_request:
@@ -11,18 +11,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test_pull_request:
+  unit_integration_test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: 📂 Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: 'pnpm'
-          cache-dependency-path: '**/pnpm-lock.yaml'
-      - name: Install dependencies
-        run: pnpm install
-      - name: Run build
+
+      - name: 📥 Pnpm install
+        uses: ./.github/actions/pnpm-install
+
+      - name: 🏗️ Run build
         run: pnpm run build
-      - name: Run tests
+
+      - name: 🧪 Run tests
         run: pnpm test
