@@ -13,15 +13,15 @@ jobs:
   test_pull_request:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: 'yarn'
-          cache-dependency-path: '**/yarn.lock'
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
       - name: Install dependencies
-        run: yarn
+        run: pnpm install
       - name: Run build
-        run: npm run build
+        run: pnpm run build
       - name: Run tests
-        run: npm test
+        run: pnpm test
