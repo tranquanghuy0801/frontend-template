@@ -1,0 +1,91 @@
+# Frontend Template - Cursor Rules
+
+## General Development Guidelines
+
+- Always use TypeScript with strict type checking
+- Follow ESLint rules from eslint-config-mantine
+- Use pnpm as the package manager
+- Maintain consistent code formatting with Prettier
+- Write comprehensive tests using Vitest and React Testing Library
+- Use Storybook for component documentation and development
+
+## Code Quality Standards
+
+- Prefer functional components with React hooks
+- Use TypeScript interfaces for prop definitions
+- Implement proper error handling and loading states
+- Follow React best practices for performance optimization
+- Write self-documenting code with clear variable and function names
+- Use meaningful commit messages following conventional commits
+
+## Component Development
+
+- Create reusable components with proper TypeScript interfaces
+- Use Mantine design system components when available
+- Implement components with accessibility in mind (ARIA labels, semantic HTML)
+- Write Storybook stories for all new components
+- Include unit tests for component logic and user interactions
+- Use CSS modules or styled-components for component-specific styles
+
+## Testing Requirements
+
+- Write unit tests for all business logic using Vitest
+- Use React Testing Library for component testing
+- Implement end-to-end tests with Cypress for critical user flows
+- Maintain test coverage above 80%
+- Mock external dependencies appropriately
+- Test both happy path and error scenarios
+
+## File Organization
+
+- Follow established folder structure
+- Use index.ts files for clean imports
+- Keep components in their own directories with tests and stories
+- Separate business logic from presentation components
+- Use absolute imports with TypeScript path mapping
+- Group related utilities and helpers in appropriate directories
+
+## Styling Guidelines
+
+- Use PostCSS with mantine-postcss-preset
+- Follow Mantine's design system principles
+- Implement responsive design patterns
+- Use CSS custom properties for theming
+- Avoid inline styles; prefer CSS modules or styled components
+- Maintain consistent spacing and typography scales
+
+## Performance Considerations
+
+- Implement code splitting for route-based components
+- Use React.memo for expensive components
+- Optimize bundle size by avoiding unnecessary dependencies
+- Implement proper loading states and skeleton screens
+- Use lazy loading for images and heavy components
+- Monitor and optimize Core Web Vitals
+
+## Documentation Standards
+
+- Write clear README documentation for complex features
+- Document API interfaces and component props
+- Include usage examples in Storybook
+- Maintain up-to-date JSDoc comments for functions
+- Document environment variables and configuration
+- Keep changelog updated with significant changes
+
+## Git and CI/CD Practices
+
+- Use feature branches and pull requests
+- Run all tests before merging (vitest, lint, typecheck, prettier)
+- Follow semantic versioning for releases
+- Use GitHub Actions for automated testing and deployment
+- Ensure Docker builds work correctly in CI
+- Review code for security vulnerabilities
+
+## Development Workflow
+
+- Run `pnpm dev` for local development
+- Use `pnpm test` before committing changes
+- Preview production builds with `pnpm preview`
+- Use Storybook for isolated component development
+- Run Cypress tests for critical path validation
+- Check TypeScript types with `pnpm typecheck`
